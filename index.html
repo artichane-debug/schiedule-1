@@ -43,6 +43,45 @@
     <!-- Skip Link for Accessibility -->
     <a href="#app-main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
     <div id="root"></div>
+    
+    <!-- Pre-app cleanup: unregister SW and clear Cache Storage once to prevent stale bundles -->
+    <script>
+      (async () => {
+        const STAMP = 'sw-preclean-1.0.9';
+        try {
+          if (!sessionStorage.getItem(STAMP)) {
+            let shouldReload = false;
+
+            if ('serviceWorker' in navigator) {
+              const regs = await navigator.serviceWorker.getRegistrations();
+              if (regs.length > 0) {
+                await Promise.all(regs.map(r => r.unregister()));
+                shouldReload = true;
+              }
+              if (navigator.serviceWorker.controller) {
+                shouldReload = true;
+              }
+            }
+
+            if ('caches' in window) {
+              const keys = await caches.keys();
+              if (keys.length > 0) {
+                await Promise.all(keys.map(k => caches.delete(k)));
+                shouldReload = true;
+              }
+            }
+
+            if (shouldReload) {
+              sessionStorage.setItem(STAMP, '1');
+              location.reload();
+              return;
+            }
+          }
+        } catch (e) {
+          console.warn('Pre-app cleanup failed:', e);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
     
     <!-- Service worker registration disabled to avoid stale cache during frequent updates. -->
