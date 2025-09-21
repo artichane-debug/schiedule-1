@@ -69,6 +69,7 @@ coverage/
 !public/logo.jpg
 !public/*.png
 !assets/logo.jpg
+!assets/github-logo.jpeg
 !assets/*.png
 
 # Local Netlify folder
