@@ -20,7 +20,7 @@ const Header = ({ currentYear, currentSemester, onYearChange, onSemesterChange, 
         {/* Logo */}
         <div className="flex items-center min-w-0">
           <img 
-            src="/logo.jpg?v=2" 
+            src="/github-logo.jpeg" 
             alt="Schiedule" 
             className="h-12 w-auto sm:h-14 object-contain"
           />
