@@ -5,6 +5,7 @@ import WeeklySchedule from '../components/WeeklySchedule';
 import CalendarView from '../components/CalendarView';
 import DayView from '../components/DayView';
 import CourseModal from '../components/CourseModal';
+import Footer from '../components/Footer';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Calendar, Grid3X3, Clock } from "lucide-react";
@@ -254,6 +255,8 @@ const Index = () => {
           currentYear={scheduleData.currentYear}
           currentSemester={scheduleData.currentSemester}
         />
+        
+        <Footer />
       </div>
     </div>
   );

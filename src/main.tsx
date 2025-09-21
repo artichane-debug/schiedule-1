@@ -4,7 +4,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import "@/index.css";
 
 const checkForUpdates = () => {
-  const currentVersion = '1.0.5';
+  const currentVersion = '1.0.6';
   const storedVersion = localStorage.getItem('app-version');
   
   if (storedVersion && storedVersion !== currentVersion) {
