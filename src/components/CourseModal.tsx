@@ -33,7 +33,7 @@ const CourseModal = ({
     day: 'monday',
     color: 'math',
     year: currentYear,
-    semester: currentSemester as 'fall' | 'spring' | 'summer',
+    semester: currentSemester as 'ganjil' | 'genap',
     credits: 3,
   });
 
@@ -50,7 +50,7 @@ const CourseModal = ({
         day: 'monday',
         color: 'math',
         year: currentYear,
-        semester: currentSemester as 'fall' | 'spring' | 'summer',
+        semester: currentSemester as 'ganjil' | 'genap',
         credits: 3,
       });
     }
@@ -64,7 +64,7 @@ const CourseModal = ({
     }
   };
 
-  const updateField = (field: keyof Course, value: any) => {
+  const updateField = (field: keyof Course, value: string | number) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -112,7 +112,7 @@ const CourseModal = ({
                 value={formData.professor}
                 onChange={(e) => updateField('professor', e.target.value)}
                 placeholder="Dr. Smith"
-                className="rounded-md border border-border bg-white hover:border-border focus:border-primary transition-smooth h-10 text-sm"
+                className="rounded-xl border border-border/50 bg-background/50 hover:bg-background focus:bg-background focus:border-primary/50 transition-all duration-200 touch-target text-responsive-sm backdrop-blur-sm"
                 required
               />
             </div>
@@ -123,7 +123,7 @@ const CourseModal = ({
                 value={formData.room}
                 onChange={(e) => updateField('room', e.target.value)}
                 placeholder="Room 101"
-                className="rounded-md border border-border bg-white hover:border-border focus:border-primary transition-smooth h-10 text-sm"
+                className="rounded-xl border border-border/50 bg-background/50 hover:bg-background focus:bg-background focus:border-primary/50 transition-all duration-200 touch-target text-responsive-sm backdrop-blur-sm"
                 required
               />
             </div>
