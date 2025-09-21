@@ -1,6 +1,8 @@
 import { Heart, Code } from "lucide-react";
 
 const Footer = () => {
+  console.log('Footer component rendering');
+  
   return (
     <footer className="w-full mt-auto py-6 border-t border-border/50 bg-card/30 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto mobile-padding">
