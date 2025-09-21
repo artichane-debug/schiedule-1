@@ -39,7 +39,11 @@ const CourseModal = ({
 
   useEffect(() => {
     if (editingCourse) {
-      setFormData(editingCourse);
+      setFormData({
+        ...editingCourse,
+        year: currentYear,
+        semester: currentSemester as 'ganjil' | 'genap',
+      });
     } else {
       setFormData({
         title: '',
@@ -54,7 +58,19 @@ const CourseModal = ({
         credits: 3,
       });
     }
-  }, [editingCourse, currentYear, currentSemester, isOpen]);
+  }, [editingCourse, currentYear, currentSemester]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,7 +95,7 @@ const CourseModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-lg mx-auto rounded-2xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl animate-scale-in">
+      <DialogContent className="w-[95vw] max-w-lg max-h-[90vh] mx-auto rounded-2xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl animate-scale-in overflow-y-auto modal-scroll">
         <DialogHeader className="pb-4">
           <DialogTitle className="text-responsive-lg font-bold text-foreground flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center">

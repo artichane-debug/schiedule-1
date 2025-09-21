@@ -4,7 +4,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import "@/index.css";
 
 const checkForUpdates = async () => {
-  const currentVersion = '1.1.0';
+  const currentVersion = '1.1.1';
   const storedVersion = localStorage.getItem('app-version');
 
   // If version changed, clear caches and unregister SW without deleting user data
