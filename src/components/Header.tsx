@@ -1,7 +1,8 @@
 import { Plus, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { clearAppCache } from "@/utils/version-manager";
+// Temporarily comment out to test deployment
+// import { clearAppCache } from "@/utils/version-manager";
 
 interface HeaderProps {
   currentYear: string;
@@ -16,7 +17,8 @@ const Header = ({ currentYear, currentSemester, onYearChange, onSemesterChange, 
   const years = Array.from({ length: 8 }, (_, i) => (currentYearNum - 2 + i).toString());
 
   const handleCacheRefresh = () => {
-    clearAppCache();
+    // Temporarily simplified for deployment debug
+    localStorage.clear();
     window.location.reload();
   };
 
