@@ -8,6 +8,7 @@ import CourseModal from '../components/CourseModal';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Calendar, Grid3X3, Clock } from "lucide-react";
+import { handleVersionUpdate, clearAppCache } from "@/utils/version-manager";
 
 const Index = () => {
   const { toast } = useToast();
@@ -23,8 +24,20 @@ const Index = () => {
   const [editingCourse, setEditingCourse] = useState<Course | null>(null);
   const [viewMode, setViewMode] = useState<'weekly' | 'calendar' | 'day'>('weekly');
 
-  // Load data from localStorage on mount
+  // Load data from localStorage on mount with version handling
   useEffect(() => {
+    // Handle app version updates
+    const isVersionOk = handleVersionUpdate();
+    
+    if (!isVersionOk) {
+      // Version incompatible, show warning but try to load data anyway
+      toast({
+        title: "App Updated",
+        description: "The app has been updated. If you experience issues, please refresh the page.",
+        duration: 5000,
+      });
+    }
+    
     const saved = localStorage.getItem('schiedule-data');
     if (saved) {
       try {
@@ -32,9 +45,15 @@ const Index = () => {
         setScheduleData(parsedData);
       } catch (error) {
         console.error('Failed to load saved data:', error);
+        toast({
+          title: "Data Load Error",
+          description: "Failed to load your saved courses. Starting fresh.",
+          variant: "destructive",
+          duration: 5000,
+        });
       }
     }
-  }, []);
+  }, [toast]);
 
   // Save data to localStorage whenever it changes
   useEffect(() => {

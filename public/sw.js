@@ -1,22 +1,20 @@
 // Service Worker for PWA functionality
-const CACHE_NAME = 'schiedule-v1';
+const CACHE_NAME = 'schiedule-v2';
 const urlsToCache = [
   '/',
-  '/manifest.json',
-  '/pwa-icon-192.png',
-  '/pwa-icon-512.png'
+  '/static/js/bundle.js',
+  '/static/css/main.css',
+  '/manifest.json'
 ];
 
 // Install event - cache resources
 self.addEventListener('install', (event) => {
+  // Skip waiting to activate immediately
+  self.skipWaiting();
+  
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(urlsToCache);
-      })
-      .then(() => {
-        return self.skipWaiting();
-      })
+      .then((cache) => cache.addAll(urlsToCache))
   );
 });
 
