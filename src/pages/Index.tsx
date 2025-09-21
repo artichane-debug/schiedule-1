@@ -8,16 +8,10 @@ import CourseModal from '../components/CourseModal';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Calendar, Grid3X3, Clock } from "lucide-react";
-// Temporarily comment out to test deployment
-// import { handleVersionUpdate, clearAppCache } from "@/utils/version-manager";
 
 const Index = () => {
   const { toast } = useToast();
   const currentYear = new Date().getFullYear().toString();
-
-  // Debug logging for deployment
-  console.log('Index component loaded successfully');
-  console.log('Current year:', currentYear);
   
   const [scheduleData, setScheduleData] = useState<ScheduleData>({
     courses: [],
@@ -29,7 +23,6 @@ const Index = () => {
   const [editingCourse, setEditingCourse] = useState<Course | null>(null);
   const [viewMode, setViewMode] = useState<'weekly' | 'calendar' | 'day'>('weekly');
 
-  // Load data from localStorage on mount (simplified for deployment debug)
   useEffect(() => {
     const saved = localStorage.getItem('schiedule-data');
     if (saved) {
@@ -47,8 +40,6 @@ const Index = () => {
       }
     }
   }, [toast]);
-
-  // Save data to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('schiedule-data', JSON.stringify(scheduleData));
   }, [scheduleData]);

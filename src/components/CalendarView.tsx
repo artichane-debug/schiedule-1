@@ -183,7 +183,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
 
   return (
     <div className="w-full max-w-7xl mx-auto mobile-padding py-4 sm:py-6 md:py-8 animate-fade-in">
-      {/* Calendar Header */}
       <div className="flex items-center justify-center mb-6 sm:mb-8">
         <div className="flex items-center gap-4 sm:gap-6">
           <Button
@@ -215,14 +214,12 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
         </div>
       </div>
 
-      {/* Calendar Grid */}
       <div 
         className="bg-card/80 backdrop-blur-sm rounded-xl select-none"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        {/* Days of Week Header */}
         <div className="grid grid-cols-7 mb-4">
           {daysOfWeek.map(day => (
             <div key={day} className="text-center py-3">
@@ -233,7 +230,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
           ))}
         </div>
 
-        {/* Calendar Days */}
         <div className="grid grid-cols-7">
           {paddedDays.map((date, index) => {
             const coursesForDay = getCoursesForDate(date);
@@ -261,7 +257,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
               >
                 {date && (
                   <div className="relative">
-                    {/* Date Number */}
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-sm sm:text-base font-normal transition-colors ${
                       isSelected || isToday 
                         ? 'bg-primary text-primary-foreground' 
@@ -270,7 +265,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
                       {date.getDate()}
                     </div>
                     
-                    {/* Small dot indicator for events */}
                     {coursesForDay.length > 0 && (
                       <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full"></div>
                     )}
@@ -281,7 +275,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
           })}
         </div>
         
-        {/* No events message */}
         {getCoursesForDate(selectedDate || new Date()).length === 0 && (
           <div className="text-center py-8">
             <p className="text-sm text-muted-foreground">
@@ -291,7 +284,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
         )}
       </div>
 
-      {/* Today's Schedule - Only show if there are courses and a date is selected */}
       {selectedDate && getCoursesForDate(selectedDate).length > 0 && (
         <div className="mt-8">
           <div className="mb-4">
@@ -303,7 +295,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
             </h3>
           </div>
           
-          {/* Mobile: Horizontal scroll */}
           <div className="block sm:hidden">
             <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide touch-scroll">
               {getCoursesForDate(selectedDate).map((course, index) => (
@@ -318,7 +309,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
             </div>
           </div>
           
-          {/* Desktop: Grid */}
           <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {getCoursesForDate(selectedDate).map((course, index) => (
               <div key={course.id} className="animate-slide-up" style={{animationDelay: `${index * 0.1}s`}}>
@@ -333,7 +323,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
         </div>
       )}
 
-      {/* Course Details Modal */}
       <Dialog open={showDateDetails} onOpenChange={setShowDateDetails}>
         <DialogContent className="w-[90vw] max-w-lg max-h-[80vh] overflow-y-auto mx-auto rounded-2xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl">
           <DialogHeader className="pb-4">
@@ -360,7 +349,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
                   key={course.id}
                   className="bg-background/50 backdrop-blur-sm border border-border/30 rounded-xl p-4 space-y-3 hover:bg-background/70 transition-colors"
                 >
-                  {/* Course Header */}
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <h3 className="font-semibold text-foreground text-base mb-1">
@@ -379,7 +367,6 @@ const CalendarView = ({ courses, onEditCourse, onDeleteCourse }: CalendarViewPro
                     </div>
                   </div>
 
-                  {/* Course Details */}
                   <div className="grid grid-cols-1 gap-3 text-sm">
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <Clock className="h-4 w-4" />

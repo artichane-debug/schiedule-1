@@ -3,10 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme-specific backgrounds */
 @layer base {
   :root {
-    /* Light theme colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -30,7 +28,6 @@
   }
 
   .dark {
-    /* Dark theme colors */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -57,7 +54,6 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Beautiful animated backgrounds */
   .light {
     background: linear-gradient(-45deg, 
       rgba(255, 255, 255, 1),
@@ -83,14 +79,11 @@
   }
 }
 
-/* Mobile-first responsive design utilities */
 @layer utilities {
-  /* Touch-friendly sizing */
   .touch-target {
     @apply min-h-[44px] min-w-[44px];
   }
   
-  /* Mobile-optimized spacing */
   .mobile-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }
@@ -98,8 +91,6 @@
   .mobile-margin {
     @apply mx-4 sm:mx-6 lg:mx-8;
   }
-  
-  /* Responsive text sizing */
   .text-responsive-xs {
     @apply text-xs sm:text-sm;
   }
@@ -120,12 +111,9 @@
     @apply text-xl sm:text-2xl lg:text-3xl;
   }
   
-  /* Mobile-friendly grid */
   .grid-responsive {
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
   }
-  
-  /* Smooth animations */
   .animate-fade-in {
     animation: fadeIn 0.3s ease-in-out;
   }

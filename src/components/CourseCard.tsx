@@ -47,12 +47,9 @@ const CourseCard = ({ course, onEdit, onDelete, className }: CourseCardProps) =>
       aria-labelledby={`course-title-${course.id}`}
       tabIndex={0}
     >
-      {/* Colored Accent */}
       <div className={`h-3 w-full ${colorClass} rounded-t-xl`} aria-hidden="true" />
 
-      {/* Content */}
       <div className="p-4 md:p-5 space-y-3">
-        {/* Header */}
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0 space-y-1">
             <h4 id={`course-title-${course.id}`} className="text-sm md:text-base font-semibold leading-tight truncate text-foreground">
@@ -65,7 +62,6 @@ const CourseCard = ({ course, onEdit, onDelete, className }: CourseCardProps) =>
             )}
           </div>
           
-          {/* Actions */}
           <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity ml-3" role="group" aria-label="Course actions">
             <Button
               variant="ghost"
@@ -88,7 +84,6 @@ const CourseCard = ({ course, onEdit, onDelete, className }: CourseCardProps) =>
           </div>
         </div>
 
-        {/* Details */}
         <div className="space-y-2" role="list" aria-label="Course details">
           <div className="flex items-center text-muted-foreground text-xs" role="listitem">
             <User className="h-3 w-3 mr-2 flex-shrink-0" aria-hidden="true" />
