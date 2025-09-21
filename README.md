@@ -4,15 +4,15 @@
 
 <div align="center">
 
-![Schiedule Logo](./logo.jpg)
+![Schiedule Logo](./github-logo.jpeg)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a2f96add-8c19-403a-81f5-eb3ebce90f59/deploy-status)](https://app.netlify.com/projects/schiedule/deploys)
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=flat&logo=vite)](https://vitejs.dev/)
 
-[🚀 **Live Demo**](https://your-netlify-url.netlify.app) • [📱 **Mobile Preview**](https://your-netlify-url.netlify.app) • [🐛 **Report Bug**](https://github.com/artichane-debug/schiedule-1/issues)
+[🚀 **Live Demo**](https://schiedule.netlify.app) • [📱 **Mobile Preview**](https://schiedule.netlify.app) • [🐛 **Report Bug**](https://github.com/artichane-debug/schiedule-1/issues)
 
 </div>
 
@@ -55,7 +55,7 @@ Schiedule isn't just another schedule app - it's your **personal academic compan
 ### **Try It Now**
 ```bash
 # Visit the live demo
-https://your-netlify-url.netlify.app
+https://schiedule.netlify.app
 ```
 
 ### **Run Locally**
