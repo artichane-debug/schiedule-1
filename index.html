@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schiedule - College Schedule Manager</title>
+    <meta name="description" content="Beautiful, colorful college schedule manager with smooth curves and animations. Organize your classes, professors, rooms, and more!" />
+    <meta name="author" content="Lovable" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Schiedule - College Schedule Manager" />
+    <meta property="og:description" content="Beautiful, colorful college schedule manager with smooth curves and animations" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Schiedule" />
+    
+    <!-- PWA Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/pwa-icon-512.png" />
+    <link rel="apple-touch-icon" href="/pwa-icon-192.png" />
+  </head>
+
+  <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#app-main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+    <script>
+      // Enhance skip link visibility on focus (kept inline for simplicity)
+      const skip = document.querySelector('.skip-link');
+      if (skip) {
+        skip.addEventListener('focus', () => {
+          skip.style.cssText = 'position:fixed;left:1rem;top:1rem;width:auto;height:auto;padding:0.5rem 0.75rem;background:#111;color:#fff;border-radius:0.375rem;z-index:9999;';
+        });
+        skip.addEventListener('blur', () => {
+          skip.style.cssText = 'position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;';
+        });
+      }
+    </script>
+  </body>
+</html>
