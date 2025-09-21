@@ -45,7 +45,7 @@ const Header = ({ currentYear, currentSemester, onYearChange, onSemesterChange, 
         {/* Logo */}
         <div className="flex items-center min-w-0">
           <img 
-            src="/github-logo.jpeg" 
+            src="/logo.png" 
             alt="Schiedule" 
             className={`h-12 w-auto sm:h-14 object-contain cursor-pointer hover:scale-105 transition-all duration-300 ${
               theme === 'dark' ? 'brightness-110 contrast-110' : 'brightness-90 contrast-90'

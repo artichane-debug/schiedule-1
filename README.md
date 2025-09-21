@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![Schiedule Logo](./assets/github-logo.jpeg)
+![Schiedule Logo](./assets/logo.png)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a2f96add-8c19-403a-81f5-eb3ebce90f59/deploy-status)](https://app.netlify.com/projects/schiedule/deploys)
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat&logo=react)](https://reactjs.org/)
