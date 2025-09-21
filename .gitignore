@@ -66,10 +66,9 @@ coverage/
 !cleanup.bat
 *.jpeg
 *.jpg
-!logo.jpg
-!public/*.jpg
+!public/logo.jpg
 !public/*.png
-!assets/*.jpg
+!assets/logo.jpg
 !assets/*.png
 
 # Local Netlify folder
