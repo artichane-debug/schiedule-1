@@ -132,7 +132,7 @@ const Index = () => {
   const totalCredits = currentCourses.reduce((sum, course) => sum + (course.credits || 0), 0);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden flex flex-col">
       {/* Dynamic theme-aware background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-muted/20"></div>
@@ -145,7 +145,7 @@ const Index = () => {
       </div>
       
       {/* Content overlay */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col min-h-screen">
         <Header
           currentYear={scheduleData.currentYear}
           currentSemester={scheduleData.currentSemester}
@@ -154,7 +154,7 @@ const Index = () => {
           onAddCourse={handleAddCourse}
         />
         
-        <main className="mobile-padding py-6 sm:py-8">
+        <main className="mobile-padding py-6 sm:py-8 flex-1">
           {/* Stats Cards */}
           <div className="flex justify-center mb-6 animate-fade-in">
             <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-200 max-w-2xl w-full">
