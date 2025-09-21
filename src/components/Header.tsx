@@ -1,6 +1,7 @@
 import { Plus, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useTheme } from "@/contexts/ThemeContext";
 // Temporarily comment out to test deployment
 // import { clearAppCache } from "@/utils/version-manager";
 
@@ -15,11 +16,16 @@ interface HeaderProps {
 const Header = ({ currentYear, currentSemester, onYearChange, onSemesterChange, onAddCourse }: HeaderProps) => {
   const currentYearNum = new Date().getFullYear();
   const years = Array.from({ length: 8 }, (_, i) => (currentYearNum - 2 + i).toString());
+  const { theme, toggleTheme } = useTheme();
 
   const handleCacheRefresh = () => {
     // Temporarily simplified for deployment debug
     localStorage.clear();
     window.location.reload();
+  };
+
+  const handleLogoClick = () => {
+    toggleTheme();
   };
 
   const handleLogoDoubleClick = () => {
@@ -41,9 +47,12 @@ const Header = ({ currentYear, currentSemester, onYearChange, onSemesterChange, 
           <img 
             src="/github-logo.jpeg" 
             alt="Schiedule" 
-            className="h-12 w-auto sm:h-14 object-contain cursor-pointer hover:opacity-80 transition-opacity"
+            className={`h-12 w-auto sm:h-14 object-contain cursor-pointer hover:scale-105 transition-all duration-300 ${
+              theme === 'dark' ? 'brightness-110 contrast-110' : 'brightness-90 contrast-90'
+            }`}
+            onClick={handleLogoClick}
             onDoubleClick={handleLogoDoubleClick}
-            title="Double-click to show cache refresh button"
+            title={`Click to switch to ${theme === 'light' ? 'dark' : 'light'} mode • Double-click for cache refresh`}
           />
         </div>
 

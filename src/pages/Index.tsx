@@ -141,14 +141,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Lovable.dev-style animated background */}
-      <div className="fixed inset-0 lovable-background-subtle"></div>
-      
-      {/* Floating orbs for visual appeal */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="floating-orb"></div>
-        <div className="floating-orb"></div>
-        <div className="floating-orb"></div>
+      {/* Dynamic theme-aware background */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-muted/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/10"></div>
+        
+        {/* Floating background orbs */}
+        <div className="floating-orb opacity-30 dark:opacity-20"></div>
+        <div className="floating-orb opacity-30 dark:opacity-20"></div>
+        <div className="floating-orb opacity-30 dark:opacity-20"></div>
       </div>
       
       {/* Content overlay */}

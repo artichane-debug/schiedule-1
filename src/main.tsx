@@ -7,7 +7,7 @@ console.log('Main.tsx loaded - starting app');
 
 // Auto-refresh detection for deployment updates
 const checkForUpdates = () => {
-  const currentVersion = '1.0.3'; // Increment this on each deployment
+  const currentVersion = '1.0.4'; // Increment this on each deployment
   const storedVersion = localStorage.getItem('app-version');
   
   if (storedVersion && storedVersion !== currentVersion) {
