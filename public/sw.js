@@ -1,5 +1,5 @@
 // Service Worker for PWA functionality
-const CACHE_NAME = 'schiedule-v2';
+const CACHE_NAME = 'schiedule-v3';
 const urlsToCache = [
   '/',
   '/static/js/bundle.js',
