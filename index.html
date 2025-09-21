@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Schiedule - College Schedule Manager</title>
-    <meta name="description" content="the definition of you do you in term of... a college schedule manager" />
+    <meta name="description" content="Beautiful, colorful college schedule manager with smooth curves and animations. Organize your academic life efficiently." />
     <meta name="author" content="2m2i4c7h" />
     <meta name="theme-color" content="#8b5cf6" />
     <meta name="color-scheme" content="light dark" />
@@ -17,14 +17,14 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="schiedule" />
-    <meta property="og:description" content="the definition of you do you in term of... a college schedule manager" />
+    <meta property="og:description" content="Beautiful, colorful college schedule manager with smooth curves and animations. Organize your academic life efficiently." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image" content="/logo.png" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:site" content="@schiedule_app" />
+    <meta name="twitter:image" content="/logo.png" />
 
     <!-- PWA Configuration -->
     <link rel="manifest" href="/manifest.json" />
@@ -41,47 +41,10 @@
 
   <body>
     <!-- Skip Link for Accessibility -->
-    <a href="#app-main" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+    <a href="#root" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
     <div id="root"></div>
     
-    <!-- Pre-app cleanup: unregister SW and clear Cache Storage once to prevent stale bundles -->
-    <script>
-      (async () => {
-        const STAMP = 'sw-preclean-1.0.9';
-        try {
-          if (!sessionStorage.getItem(STAMP)) {
-            let shouldReload = false;
-
-            if ('serviceWorker' in navigator) {
-              const regs = await navigator.serviceWorker.getRegistrations();
-              if (regs.length > 0) {
-                await Promise.all(regs.map(r => r.unregister()));
-                shouldReload = true;
-              }
-              if (navigator.serviceWorker.controller) {
-                shouldReload = true;
-              }
-            }
-
-            if ('caches' in window) {
-              const keys = await caches.keys();
-              if (keys.length > 0) {
-                await Promise.all(keys.map(k => caches.delete(k)));
-                shouldReload = true;
-              }
-            }
-
-            if (shouldReload) {
-              sessionStorage.setItem(STAMP, '1');
-              location.reload();
-              return;
-            }
-          }
-        } catch (e) {
-          console.warn('Pre-app cleanup failed:', e);
-        }
-      })();
-    </script>
+    <!-- Cache management is handled in main.tsx to avoid duplication -->
     <script type="module" src="/src/main.tsx"></script>
     
     <!-- Service worker registration disabled to avoid stale cache during frequent updates. -->
