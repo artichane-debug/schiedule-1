@@ -1,6 +1,6 @@
-# 📚 Schiedule - College Schedule Manager
+# schiedule
 
-> *Beautiful, intuitive, and powerful schedule management for college students* ✨
+> *the you do you version of notion* ✨
 
 <div align="center">
 
@@ -18,11 +18,11 @@
 
 ---
 
-## 🌟 **What Makes Schiedule Special?**
+## 🌟 **why do i make this fr?**
 
-Schiedule isn't just another schedule app - it's your **personal academic companion** designed specifically for Indonesian college students. Built with modern web technologies and a deep understanding of the Indonesian academic system.
+uhhh, whatever? but fr tho, since i can't code with kotlin etcetc, i gotta make something in my range first yk? so gradually i'm gonna make an app using react native, then probably gonna make the kotlin version out of the app fr.
 
-### ✨ **Key Features**
+### ✨ **features**
 
 🗓️ **Multiple View Modes**
 - **Weekly View** - Classic grid layout for weekly planning
@@ -36,13 +36,13 @@ Schiedule isn't just another schedule app - it's your **personal academic compan
   - Ganjil semester starts: **September 15**
   - Genap semester starts: **February 23**
 
-🎨 **Beautiful Design**
+🎨 **design**
 - **Glassmorphism UI** - Modern, clean, and professional
 - **Dark/Light Mode** - Automatic theme switching
 - **Color-Coded Subjects** - Visual organization by course type
 - **Responsive Design** - Perfect on mobile, tablet, and desktop
 
-📱 **Mobile-First Experience**
+📱 **more mobile-y web app**
 - **Touch Gestures** - Swipe navigation between dates
 - **PWA Ready** - Install as a native app
 - **Offline Support** - Works without internet connection
@@ -178,12 +178,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Made with ❤️ for Indonesian College Students**
+**Made with ❤️ for myself**
 
 [⭐ **Star this repo**](https://github.com/artichane-debug/schiedule-1) • [🐛 **Report Issues**](https://github.com/artichane-debug/schiedule-1/issues) • [💬 **Join Discussion**](https://github.com/artichane-debug/schiedule-1/discussions)
 
 ---
 
-*"Organize your academic life, one schedule at a time"* 📚✨
+*"keep it up to the point where you can marry someone named michelle"*
 
 </div>
