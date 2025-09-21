@@ -81,28 +81,38 @@ const DayView = ({ courses, onEditCourse, onDeleteCourse }: DayViewProps) => {
       
       if (!startTime || !endTime) return false;
       
-      // Parse time strings (assuming format like "09:00" or "9:00 AM")
-      const parseTime = (timeStr: string) => {
-        // Remove AM/PM and clean up
-        const cleanTime = timeStr.replace(/[^\d:]/g, '');
-        const [hourStr, minuteStr] = cleanTime.split(':');
-        let parsedHour = parseInt(hourStr);
+      // Enhanced time parsing to handle minutes properly
+      const parseTimeToMinutes = (timeStr: string) => {
+        // Clean the time string and handle different formats
+        let cleanTime = timeStr.trim().toLowerCase();
+        const isPM = cleanTime.includes('pm');
+        const isAM = cleanTime.includes('am');
         
-        // Handle AM/PM
-        if (timeStr.toLowerCase().includes('pm') && parsedHour !== 12) {
+        // Remove AM/PM and clean up
+        cleanTime = cleanTime.replace(/[^\d:]/g, '');
+        const [hourStr, minuteStr = '0'] = cleanTime.split(':');
+        let parsedHour = parseInt(hourStr);
+        const parsedMinutes = parseInt(minuteStr);
+        
+        // Handle 24-hour format or AM/PM conversion
+        if (isPM && parsedHour !== 12) {
           parsedHour += 12;
-        } else if (timeStr.toLowerCase().includes('am') && parsedHour === 12) {
+        } else if (isAM && parsedHour === 12) {
           parsedHour = 0;
         }
         
-        return parsedHour;
+        // Convert to total minutes from midnight
+        return parsedHour * 60 + parsedMinutes;
       };
       
-      const courseStartHour = parseTime(startTime);
-      const courseEndHour = parseTime(endTime);
+      const courseStartMinutes = parseTimeToMinutes(startTime);
+      const courseEndMinutes = parseTimeToMinutes(endTime);
+      const hourStartMinutes = hour * 60;
+      const hourEndMinutes = (hour + 1) * 60;
       
-      // Check if the current hour falls within the course time
-      return hour >= courseStartHour && hour < courseEndHour;
+      // Check if the course overlaps with this hour slot
+      // Course overlaps if it starts before the hour ends AND ends after the hour starts
+      return courseStartMinutes < hourEndMinutes && courseEndMinutes > hourStartMinutes;
     });
   };
 
@@ -249,7 +259,29 @@ const DayView = ({ courses, onEditCourse, onDeleteCourse }: DayViewProps) => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
                             <Clock className="h-3 w-3" />
-                            <span>{course.startTime} - {course.endTime}</span>
+                            <span className="font-medium">{course.startTime} - {course.endTime}</span>
+                            {(() => {
+                              // Calculate duration for display
+                              const parseTimeToMinutes = (timeStr: string) => {
+                                let cleanTime = timeStr.trim().toLowerCase();
+                                const isPM = cleanTime.includes('pm');
+                                const isAM = cleanTime.includes('am');
+                                cleanTime = cleanTime.replace(/[^\d:]/g, '');
+                                const [hourStr, minuteStr = '0'] = cleanTime.split(':');
+                                let parsedHour = parseInt(hourStr);
+                                const parsedMinutes = parseInt(minuteStr);
+                                if (isPM && parsedHour !== 12) parsedHour += 12;
+                                else if (isAM && parsedHour === 12) parsedHour = 0;
+                                return parsedHour * 60 + parsedMinutes;
+                              };
+                              const duration = parseTimeToMinutes(course.endTime) - parseTimeToMinutes(course.startTime);
+                              const hours = Math.floor(duration / 60);
+                              const minutes = duration % 60;
+                              let durationText = '';
+                              if (hours > 0) durationText += `${hours}h `;
+                              if (minutes > 0) durationText += `${minutes}m`;
+                              return duration > 0 ? <span className="ml-1 text-xs opacity-70">({durationText.trim()})</span> : null;
+                            })()}
                           </div>
                           
                           {course.room && (
