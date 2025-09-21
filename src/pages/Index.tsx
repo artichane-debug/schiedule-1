@@ -14,6 +14,10 @@ import { Calendar, Grid3X3, Clock } from "lucide-react";
 const Index = () => {
   const { toast } = useToast();
   const currentYear = new Date().getFullYear().toString();
+
+  // Debug logging for deployment
+  console.log('Index component loaded successfully');
+  console.log('Current year:', currentYear);
   
   const [scheduleData, setScheduleData] = useState<ScheduleData>({
     courses: [],
